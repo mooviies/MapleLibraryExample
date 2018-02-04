@@ -1,0 +1,12 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"normal": {
+			"model": "maplelibex:pedestal"
+		},
+		"inventory": {
+			"model": "maplelibex:pedestal",
+			"transform": "forge:default-block"
+		}
+	}
+}

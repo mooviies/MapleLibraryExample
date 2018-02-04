@@ -1,0 +1,18 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"side": "maplelibex:blocks/counter_side",
+			"top": "maplelibex:blocks/counter_top",
+			"bottom": "maplelibex:blocks/counter_bottom"
+		}
+	},
+	"variants": {
+		"normal": {
+			"model": "maplelib:cube_column"
+		},
+		"inventory": {
+			"model": "maplelib:cube_column"
+		}
+	}
+}

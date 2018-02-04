@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "maplelibex:corn"
+		}
+	],
+	"result": {
+		"item": "maplelibex:corn_seed"
+	}
+}
