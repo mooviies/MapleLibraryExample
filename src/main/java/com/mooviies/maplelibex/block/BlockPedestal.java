@@ -21,7 +21,9 @@ import javax.annotation.Nullable;
 public class BlockPedestal extends MBlockTileEntity<TileEntityPedestal> {
 
     public BlockPedestal() {
-        super("pedestal", Material.ROCK);
+        super(MapleExampleMod.DESCRIPTOR, "pedestal", Material.ROCK);
+        setHardness(3f);
+        setResistance(5f);
     }
 
     @Override

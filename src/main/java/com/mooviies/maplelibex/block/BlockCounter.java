@@ -1,6 +1,7 @@
 package com.mooviies.maplelibex.block;
 
 import com.mooviies.maplelib.block.MBlockTileEntity;
+import com.mooviies.maplelibex.MapleExampleMod;
 import com.mooviies.maplelibex.block.tileentity.TileEntityCounter;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -16,7 +17,9 @@ import javax.annotation.Nullable;
 public class BlockCounter extends MBlockTileEntity<TileEntityCounter> {
 
     public BlockCounter() {
-        super("counter", Material.ROCK);
+        super(MapleExampleMod.DESCRIPTOR, "counter", Material.ROCK);
+        setHardness(3f);
+        setResistance(5f);
     }
 
     @Override

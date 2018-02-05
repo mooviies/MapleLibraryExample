@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"CC",
+		"CS",
+		" S"
+	],
+	"key": {
+		"C": {
+			"item": "maplelibex:ingot_copper"
+		},
+		"S": {
+			"type": "forge:ore_dict",
+			"ore": "stickWood"
+		}
+	},
+	"result": {
+		"item": "maplelibex:copper_axe"
+	}
+}
