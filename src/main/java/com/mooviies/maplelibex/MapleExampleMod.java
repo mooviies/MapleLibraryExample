@@ -1,11 +1,8 @@
 package com.mooviies.maplelibex;
 
-import com.mooviies.maplelib.MapleMod;
 import com.mooviies.maplelib.MapleModDescriptor;
 import com.mooviies.maplelib.client.MapleTab;
 import com.mooviies.maplelibex.gui.GuiHandler;
-import com.mooviies.maplelibex.network.PacketRequestUpdatePedestal;
-import com.mooviies.maplelibex.network.PacketUpdatePedestal;
 import com.mooviies.maplelibex.proxy.CommonProxy;
 import com.mooviies.maplelibex.registry.ModBlocks;
 import com.mooviies.maplelibex.registry.ModItems;
@@ -49,10 +46,6 @@ public class MapleExampleMod
         ModItems.initializeStaticField();
 
         proxy.registerRenderers();
-
-        network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
-        network.registerMessage(new PacketUpdatePedestal.Handler(), PacketUpdatePedestal.class, 0, Side.CLIENT);
-        network.registerMessage(new PacketRequestUpdatePedestal.Handler(), PacketRequestUpdatePedestal.class, 1, Side.SERVER);
     }
 
     @Mod.EventHandler

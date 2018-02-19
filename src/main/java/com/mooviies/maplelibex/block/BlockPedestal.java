@@ -6,17 +6,25 @@ import com.mooviies.maplelibex.block.tileentity.TileEntityPedestal;
 import com.mooviies.maplelibex.gui.GuiHandler;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.audio.Sound;
+import net.minecraft.client.audio.SoundList;
+import net.minecraft.client.audio.SoundRegistry;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class BlockPedestal extends MBlockTileEntity<TileEntityPedestal> {
 
@@ -57,14 +65,32 @@ public class BlockPedestal extends MBlockTileEntity<TileEntityPedestal> {
             IItemHandler itemHandler = tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side);
             if (!player.isSneaking())
             {
+                Random random = new Random();
+                float randomPitch = 0.5f + random.nextFloat();
                 ItemStack heldItem = player.getHeldItemMainhand();
                 if (heldItem.isEmpty())
                 {
-                    player.setHeldItem(hand, itemHandler.extractItem(0, 64, false));
+                    if (!itemHandler.getStackInSlot(0).isEmpty())
+                    {
+                        player.setHeldItem(hand, itemHandler.extractItem(0, 64, false));
+                        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1, randomPitch);
+                    }
                 }
                 else
                 {
-                    player.setHeldItem(hand, itemHandler.insertItem(0, heldItem, false));
+                    if (itemHandler.getStackInSlot(0).isEmpty())
+                    {
+                        player.setHeldItem(hand, itemHandler.insertItem(0, heldItem, false));
+                    }
+                    else
+                    {
+                        ItemStack pedestalItemCopy = itemHandler.getStackInSlot(0).copy();
+                        itemHandler.extractItem(0, 64, false);
+                        itemHandler.insertItem(0, heldItem, false);
+                        player.setHeldItem(hand, pedestalItemCopy);
+
+                    }
+                    world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1, randomPitch);
                 }
                 tile.markDirty();
             }

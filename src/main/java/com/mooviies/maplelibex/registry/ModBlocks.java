@@ -3,7 +3,6 @@ package com.mooviies.maplelibex.registry;
 import com.mooviies.maplelib.block.MBlockCrops;
 import com.mooviies.maplelib.block.MBlockOre;
 import com.mooviies.maplelib.registry.MapleBlocks;
-import com.mooviies.maplelib.registry.StaticFieldInitializer;
 import com.mooviies.maplelibex.MapleExampleMod;
 import com.mooviies.maplelibex.block.*;
 

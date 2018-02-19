@@ -1,5 +1,6 @@
 package com.mooviies.maplelibex.block.tileentity;
 
+import com.mooviies.maplelib.block.tileentity.capability.CapabilityContainerTime;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -9,12 +10,13 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.ForgeHooksClient;
+import net.minecraftforge.items.CapabilityItemHandler;
 import org.lwjgl.opengl.GL11;
 
 public class TESRPedestal extends TileEntitySpecialRenderer<TileEntityPedestal> {
     @Override
     public void render(TileEntityPedestal te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        ItemStack stack = te.inventory.getStackInSlot(0);
+        ItemStack stack = te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).getStackInSlot(0);
         if (!stack.isEmpty()) {
             GlStateManager.enableRescaleNormal();
             GlStateManager.alphaFunc(GL11.GL_GREATER, 0.1f);
@@ -22,7 +24,7 @@ public class TESRPedestal extends TileEntitySpecialRenderer<TileEntityPedestal> 
             RenderHelper.enableStandardItemLighting();
             GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
             GlStateManager.pushMatrix();
-            double offset = Math.sin((te.getWorld().getTotalWorldTime() - te.lastChangeTime + partialTicks) / 8) / 4.0;
+            double offset = Math.sin((te.getWorld().getTotalWorldTime() + partialTicks) / 8) / 4.0;
             GlStateManager.translate(x + 0.5, y + 1.25 + offset, z + 0.5);
             GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks) * 4, 0, 1, 0);
 

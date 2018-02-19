@@ -5,7 +5,6 @@ import com.mooviies.maplelib.item.MItemOre;
 import com.mooviies.maplelib.item.MItemSeeds;
 import com.mooviies.maplelib.item.armor.MItemArmor;
 import com.mooviies.maplelib.item.tool.*;
-import com.mooviies.maplelib.registry.StaticFieldInitializer;
 import com.mooviies.maplelibex.MapleExampleMod;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
